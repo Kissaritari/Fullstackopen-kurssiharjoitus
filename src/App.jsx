@@ -31,7 +31,7 @@ const App = () => {
       <div>
         {AddPerson(persons,setPersons)}
       </div>
-      <h2> All the single ladies </h2>
+      <h2> All the kissa ladies </h2>
       <div>
         {Lista(personsToShow)}
       </div> 
