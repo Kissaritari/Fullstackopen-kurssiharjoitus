@@ -1,3 +1,4 @@
+import personService from '../services/notes'
 import { useState } from 'react';
 
 export function AddPerson(persons, setPersons) {
@@ -16,8 +17,14 @@ export function AddPerson(persons, setPersons) {
       window.alert(`${newNumber} is already added to phonebook`);
 
     else (
-      setPersons([...persons, newPerson]));
-
+      setPersons([...persons, newPerson]),
+      personService
+      .create(newPerson)
+      .then(Response => {
+      
+        console.log(Response)
+      }))
+      
     setNewName('');
     setNewNumber('');
 

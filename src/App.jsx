@@ -3,7 +3,8 @@ import "./App.css"
 import { Lista } from './components/Lista'
 import { AddPerson } from './components/AddPerson'
 import { Filtteri } from './components/Filtteri'
-import axios from 'axios'
+import personService from './services/notes'
+
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -15,15 +16,17 @@ const App = () => {
     : persons.filter(person =>  person.name.toLowerCase().includes(currentSeachTerm.toLowerCase()) )
 
     useEffect(() => {
-      axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        setPersons(response.data)
+      personService
+      .getAll()
+      .then(initialPersons => {
+        setPersons(initialPersons)
       })
-    })
+    }, []) // added dependency array
+
+
   return (
     <div className="main">
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
       <div>
         {Filtteri(currentSeachTerm,setSearchTerm)}
       </div>
@@ -33,7 +36,7 @@ const App = () => {
       </div>
       <h2> All the kissa ladies </h2>
       <div>
-        {Lista(personsToShow)}
+        {Lista(personsToShow,setPersons)}
       </div> 
     </div>
   )
