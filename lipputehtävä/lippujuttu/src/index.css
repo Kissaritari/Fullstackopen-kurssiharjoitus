@@ -1,0 +1,22 @@
+:root {
+  background-color: rgb(24, 28, 41);
+  color: blanchedalmond;
+}
+.keskus {
+  display: flex;
+  justify-content: center;
+}
+form {
+  margin: 15px;
+  height: 15px;
+}
+
+h1 {
+  padding: 10px;
+  text-align: center;
+  color: rgb(17, 255, 255);
+  border-radius: 3px;
+  border-color: aquamarine;
+  border-style: dashed;
+  border
+}
