@@ -1,7 +1,7 @@
 import personService from '../services/notes'
 import { useState } from 'react';
 
-export function AddPerson(persons, setPersons) {
+export function AddPerson(persons, setPersons,setChangeMessage,) {
   const [newName, setNewName] = useState('');
 
   const [newNumber, setNewNumber] = useState('');
@@ -25,8 +25,15 @@ export function AddPerson(persons, setPersons) {
         .update(checkName.id,changedPerson)
         .then(returnedPerson => {
           setPersons(persons.map(n => n.id !== checkName.id? n : returnedPerson))
-
-        })
+          setChangeMessage(`number of ${newName} is changed`)
+          setTimeout(() => {
+            setChangeMessage(null)
+          }, 5000)
+        },
+        (  () => 
+          setChangeMessage(`number of ${newName} has already been removed!`))
+        )
+        
       }
       
     }
@@ -35,7 +42,10 @@ export function AddPerson(persons, setPersons) {
       .create(newPerson)
       .then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson))
-      
+        setChangeMessage(`Successfully added ${newName}`)
+          setTimeout(() => {
+          setChangeMessage(null)
+        }, 5000)
     })}
       
     setNewName('');
