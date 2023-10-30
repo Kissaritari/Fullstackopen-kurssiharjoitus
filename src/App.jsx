@@ -23,6 +23,13 @@ const App = () => {
       })
     }, []) // added dependency array
 
+    const Remove = (id,name) => {
+      if(window.confirm(`Poistetaanko ${name} id:llä ${id}?`)) {
+        console.log(`poistettu ${id} listasta${personsToShow}`);
+      
+        personService.remove(id)
+            .then(() => {
+            setPersons(persons.filter((Person) => Person.id !== id));})}}
 
   return (
     <div className="main">
@@ -36,7 +43,7 @@ const App = () => {
       </div>
       <h2> All the kissa ladies </h2>
       <div>
-        {Lista(personsToShow,setPersons)}
+        {Lista(personsToShow,Remove)}
       </div> 
     </div>
   )

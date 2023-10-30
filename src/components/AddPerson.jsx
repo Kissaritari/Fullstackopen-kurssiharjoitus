@@ -17,12 +17,10 @@ export function AddPerson(persons, setPersons) {
       window.alert(`${newNumber} is already added to phonebook`);
 
     else (
-      setPersons([...persons, newPerson]),
       personService
       .create(newPerson)
-      .then(Response => {
-      
-        console.log(Response)
+      .then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson))
       }))
       
     setNewName('');
