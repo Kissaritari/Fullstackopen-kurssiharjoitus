@@ -25,7 +25,7 @@ const App = () => {
 
     const Remove = (id,name) => {
       if(window.confirm(`Poistetaanko ${name} id:llä ${id}?`)) {
-        console.log(`poistettu ${id} listasta${personsToShow}`);
+        console.log(`poistettu ${id}`);
       
         personService.remove(id)
             .then(() => {
