@@ -1,2 +1,2 @@
-Fullstack open teht 2.6 - 2.11
-tsaku : )
+Koko fullstack open 2. kappale, paitsi se sääjuttu ku en mä sitä saa toimimaan
+

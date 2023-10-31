@@ -30,8 +30,12 @@ export function AddPerson(persons, setPersons,setChangeMessage,) {
             setChangeMessage(null)
           }, 5000)
         },
-        (  () => 
-          setChangeMessage(`number of ${newName} has already been removed!`))
+        (  () => {
+          setChangeMessage(`number of ${newName} has already been removed!`)
+          setTimeout(() => {
+            setChangeMessage(null)
+          }, 5000)}
+          )
         )
         
       }
