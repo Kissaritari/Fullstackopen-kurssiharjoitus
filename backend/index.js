@@ -1,36 +1,19 @@
 const express = require('express')
 var morgan = require('morgan')
+const cors = require('cors')
+const persons = require('../db.json')
+const { default: notes } = require('../src/services/notes')
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(morgan('tiny'))
-let persons = [
-    {
-        "name": "kipsi",
-        "number": "123124599",
-        "id": 8
-      },
-      {
-        "name": "kisaa",
-        "number": "34yhe",
-        "id": 10
-      },
-      {
-        "name": "anita",
-        "number": "8489756",
-        "id": 11
-      },
-      {
-        "name": "samul",
-        "number": "5247574356",
-        "id": 12
-      },
-      {
-        "name": "johannes",
-        "number": "463276",
-        "id": 13
-      }
-]
 
+const generateId = () => {
+  const maxId = notes.length > 0
+    ? Math.max(...notes.map(n => n.id))
+    : 0
+  return maxId + 1
+}
 
 app.get('/', (req, res) => {
   res.send('<h1>Hello World!</h1>')
@@ -62,11 +45,22 @@ app.delete('/api/persons/:id', (req, res) => {
     )
 
 
-    app.post('/api/persons', (request, response) => {
-      const body = request.body
-      console.log(body)
-      response.json(body)
+app.post('/api/persons', (request, response) => {
+  const body = request.body
+  if (!body.content) {
+    return response.status(400).json({
+      error: 'content missing'
     })
+  }
+  const person = {
+    content: body.name,
+    number: body.number,
+    id:generateId(),
+  }
+ 
+  persons = persons.concat(person)
+  response.json(person)
+})
       
     
   
