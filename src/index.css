@@ -1,3 +1,62 @@
 :root {
     background-color: rgb(11, 23, 28);
 }
+* {
+    font-family:'Courier New', Courier, monospace
+}
+.main {
+    color: bisque;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+form div {
+    margin-top: 4px;
+    color: blanchedalmond;
+    
+}
+input {
+    background-color: rgb(70, 69, 69);
+    color: rgb(144, 211, 240);
+}
+h1 {
+    color:rgb(122, 223, 120);
+    font-weight: 600;
+    
+}
+ul {
+    background-color: rgb(19, 34, 41);
+    margin-right: 70%;
+    padding: 20px 27px;
+}
+li {
+    display: flex;
+    justify-content: space-between; /* this will create space between the text and the button */
+    align-items: center; /* this will vertically center the text and the button */
+    border: 0.4px;
+    border-color: aliceblue;
+    border-style: dotted;
+
+  }
+  
+  li button {
+    display: flex;
+    align-self: flex-end; /* this will align the button to the right edge of the list item */
+    transition: 0.3s;
+    background-color: rgb(183, 175, 152);
+
+  }
+  li button:hover{
+    background-color: rgb(219, 72, 72);
+  }
+
+  .error {
+    color: rgb(255, 0, 0);
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 65%;
+  }
